@@ -17,9 +17,7 @@ function checkFolder() {
 
         fs.stat(filePath, (err, stats) => {
           if (err) throw err;
-          const kbSize = Math.round((stats.size / 1024) * 100) / 100;
-
-          stdout.write(`${fileName} - ${fileExt} - ${kbSize}kb\n`);
+          stdout.write(`${fileName} - ${fileExt} - ${stats.size}B\n`);
         });
       }
     });
