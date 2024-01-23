@@ -33,8 +33,8 @@ function createFile(fileName) {
 
   stdout.write(beforeInputMsg);
   stdin.on('data', (chunk) => {
-    const string = chunk.toString();
-    if (!(string.toLowerCase() === 'exit\r\n')) {
+    const string = chunk.toString().trim();
+    if (!(string.toLowerCase() === 'exit')) {
       write(output, string);
     } else {
       exit();
