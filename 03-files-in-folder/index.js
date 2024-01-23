@@ -12,9 +12,8 @@ function checkFolder() {
       const filePath = path.join(folderPath, file.name);
 
       if (file.isFile()) {
-        const fileName = file.name.slice(0, file.name.indexOf('.'));
         const fileExt = path.extname(filePath).slice(1);
-
+        const fileName = path.basename(file.name, path.extname(filePath));
         fs.stat(filePath, (err, stats) => {
           if (err) throw err;
           stdout.write(`${fileName} - ${fileExt} - ${stats.size}B\n`);
